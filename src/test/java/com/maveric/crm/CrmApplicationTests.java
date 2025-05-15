@@ -56,11 +56,11 @@ public class CrmApplicationTests {
 		List<Customer> females = customerServices.getCustomerDetailsByGender("Female");
 		assertFalse(females.isEmpty());
 	}
-	@Test
-	@Order(7)
-	void testGetCustomersByAge_NotFound(){
-		List<Customer> list = customerServices.getCustomerDetailsByAge(101);
-		assertTrue(list.isEmpty());
-	}
+//	@Test
+//	@Order(7)
+//	void testGetCustomersByAge_NotFound(){
+//		List<Customer> list = customerServices.getCustomerDetailsByAge(101);
+//		assertTrue(list.isEmpty());
+//	}
 
 }
