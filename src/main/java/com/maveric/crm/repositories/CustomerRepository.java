@@ -10,7 +10,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     List<Customer> findByAge(int age);
     List<Customer> findByGender(String gender);
     List<Customer> findBylastName(String lastName);
-
-
-
+    Customer findByEmailId(String emailId);
+    List<Customer> findByFirstName(String firstName);
 }

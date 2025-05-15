@@ -71,4 +71,10 @@ public class CustomerServicesImpl implements CustomerServices {
         if(customers.isEmpty()) throw new CustomerDetailsNotFoundException("Customer details not found by LastName"+" "+lastName);
         return customers;
     }
+    @Override
+    public List<Customer> getCustomerDetailsByFirstName(String firstName) throws CustomerDetailsNotFoundException {
+        List<Customer> customers =   customerRepository.findByFirstName(firstName);
+        if( customers.isEmpty()) throw  new CustomerDetailsNotFoundException("Customer details not found for firstName :  "+firstName);
+        return customers;
+    }
 }
