@@ -77,5 +77,11 @@ void testGetCustomersByGenderCaseInsensitive() {
 		Customer savedCustomer = customerServices.acceptCustomerDetails(customer);
 		assertEquals("Neha", savedCustomer.getFirstName());
 	}
-
+	@Test
+	@Order(10)
+	void testVerifyEmailAfterSavingCustomer() {
+		Customer customer = new Customer(30, "Male", "rohan@example.com", "Singh", "Rohan");
+		Customer savedCustomer = customerServices.acceptCustomerDetails(customer);
+		assertEquals("rohan@example.com", savedCustomer.getEmailId());
+	}
 }
