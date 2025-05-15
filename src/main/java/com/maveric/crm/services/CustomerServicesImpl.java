@@ -22,18 +22,11 @@ public class CustomerServicesImpl implements CustomerServices {
         return customerRepository.save(customer);
     }
 
-//    @Override
-//    public Customer getCustomerDetails(int id) throws CustomerDetailsNotFoundException {
-//        Optional<Customer> customerOptional = customerRepository.findById(id);
-//        if(customerOptional.isEmpty()) throw  new CustomerDetailsNotFoundException("Employee Details not found for id "+id);
-//        return  customerOptional.get();
-//    }
-
-//    @Override
-//    public void updateCustomerDetails(Customer customer) throws CustomerDetailsNotFoundException {
-//      this.getCustomerDetails(customer.getId());
-//      customerRepository.save(customer);
-//    }
+    @Override
+    public void updateCustomerDetails(Customer customer) throws CustomerDetailsNotFoundException {
+     this.getCustomerDetails();
+     customerRepository.save(customer);
+    }
 
     @Override
     public String removeCustomerDetails(int id) throws CustomerDetailsNotFoundException {

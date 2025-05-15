@@ -27,10 +27,12 @@ public class CustomerController {
         return  responseEntity;
 
         //return  new ResponseEntity<>(employeeServices.acceptEmployeeDetails(employeeToBeInsert), HttpStatus.CREATED);
-
     }
-
+    @GetMapping(value = "/v1/customer/all")
+    public ResponseEntity <List<Customer>> getCustomerDetails() throws CustomerDetailsNotFoundException {
+        List<Customer> allCustomers = customerServices.getCustomerDetails();    return new ResponseEntity<>(allCustomers, HttpStatus.OK);}
     // PathParam
+
     @GetMapping( value="/v1/customer/id/{id}" )
     public ResponseEntity <Customer> getCustomerDetails(@PathVariable("id") int id ) throws CustomerDetailsNotFoundException {
 
@@ -48,7 +50,7 @@ public class CustomerController {
         //List<Customer> customers = customerServices.getCustomerDetailsByGender(gender);
         return new ResponseEntity<>(customerServices.getCustomerDetailsByGender(gender), HttpStatus.OK);
     }
-@DeleteMapping("/v1/customer/id/{id}")
+    @DeleteMapping("/v1/customer/id/{id}")
     public ResponseEntity<String> removeCustomerDetails(@PathVariable("id") int id ) throws CustomerDetailsNotFoundException {
     return new ResponseEntity<>(customerServices.removeCustomerDetails(id), HttpStatus.OK);
 }

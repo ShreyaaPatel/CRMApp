@@ -56,11 +56,26 @@ public class CrmApplicationTests {
 		List<Customer> females = customerServices.getCustomerDetailsByGender("Female");
 		assertFalse(females.isEmpty());
 	}
-//	@Test
-//	@Order(7)
-//	void testGetCustomersByAge_NotFound(){
-//		List<Customer> list = customerServices.getCustomerDetailsByAge(101);
-//		assertTrue(list.isEmpty());
-//	}
+@Test
+@Order(7)
+void testGetCustomersByGenderCaseInsensitive() {
+	List<Customer> females = customerServices.getCustomerDetailsByGender("fEmAle");
+	assertFalse(females.isEmpty());
+}
+
+	@Test
+	@Order(8)
+	void testDuplicateEmailAllowedOrNot() {
+		Customer c1 = customerServices.acceptCustomerDetails(new Customer(28, "Male", "Ajay@example.com", "sharma", "Ajay"));
+		Customer c2 = customerServices.acceptCustomerDetails(new Customer(23, "Male", "Ajay@example.com", "Pandey", "Ajay"));
+		assertNotEquals(c1.getId(), c2.getId()); // only passes if duplicate emails are allowed
+	}
+	@Test
+	@Order(9)
+	void testCheckFirstNameAfterSaving() {
+		Customer customer = new Customer(28, "Female", "neha@example.com", "Sharma", "Neha");
+		Customer savedCustomer = customerServices.acceptCustomerDetails(customer);
+		assertEquals("Neha", savedCustomer.getFirstName());
+	}
 
 }
