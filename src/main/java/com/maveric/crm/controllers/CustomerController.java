@@ -4,6 +4,7 @@ package com.maveric.crm.controllers;
 import com.maveric.crm.exceptions.CustomerDetailsNotFoundException;
 import com.maveric.crm.pojos.Customer;
 import com.maveric.crm.services.CustomerServices;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,7 +21,7 @@ public class CustomerController {
 
 
     @PostMapping(value = "/v1/customer" , consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Customer> acceptCustomerDetails(@RequestBody Customer customerToBeInsert){
+    public ResponseEntity<Customer> acceptCustomerDetails(@Valid @RequestBody Customer customerToBeInsert){
         
         Customer insertedCustomer = customerServices.acceptCustomerDetails(customerToBeInsert);
         ResponseEntity <Customer> responseEntity = new ResponseEntity<>(insertedCustomer,HttpStatus.CREATED);

@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 
 import java.util.Objects;
 
@@ -15,6 +17,8 @@ public class Customer {
     private int id;
     private String firstName, lastName;
     private String emailId, gender;
+    @Min(value=18 ,message = "Age should be above or equal to 18")
+    @Max(value=100 ,message = "Age should be below or equal to 100")
     private int age;
 
     public Customer() {

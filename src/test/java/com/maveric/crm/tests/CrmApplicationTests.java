@@ -1,4 +1,4 @@
-package com.maveric.crm;
+package com.maveric.crm.tests;
 
 import com.maveric.crm.exceptions.CustomerDetailsNotFoundException;
 import com.maveric.crm.pojos.Customer;
