@@ -74,6 +74,11 @@ public class CustomerController {
         return new ResponseEntity<>("Successfully Updated", HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/v1/customer/all", method = RequestMethod.GET)
+    public ResponseEntity<List<Customer>> getAllCustomers() {
+        List<Customer> customers = customerServices.getCustomerDetails();
+        return new ResponseEntity<>(customers, HttpStatus.OK);
+    }
 }
 //
 

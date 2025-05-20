@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.util.HashMap;
 import java.util.Map;
 
+//response to the customerhandler
 @ControllerAdvice
 public class CustomExceptionHandler {
 
@@ -19,5 +20,10 @@ public class CustomExceptionHandler {
         ResponseEntity<String> responseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         return responseEntity;
     }
-    @ExceptionHandler(MethodArgumentNotValidException.class)public ResponseEntity<Map<String, String>> handleValidationErrors(MethodArgumentNotValidException ex) {    Map<String, String> errors = new HashMap<>();    for (FieldError error : ex.getBindingResult().getFieldErrors()) {        errors.put(error.getField(), error.getDefaultMessage());    }    return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);}
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String, String>> handleValidationErrors(MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+            errors.put(error.getField(), error.getDefaultMessage());    }
+        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);}
 }

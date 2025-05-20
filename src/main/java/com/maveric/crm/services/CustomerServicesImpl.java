@@ -66,7 +66,7 @@ public class CustomerServicesImpl implements CustomerServices {
     }
 
     @Override
-    public List<Customer> getCustomerDetailsBylastName(String lastName) throws CustomerDetailsNotFoundException {
+    public List<Customer> getCustomerDetailsByLastName(String lastName) throws CustomerDetailsNotFoundException {
         List<Customer> customers = customerRepository.findBylastName(lastName);
         if(customers.isEmpty()) throw new CustomerDetailsNotFoundException("Customer details not found by LastName"+" "+lastName);
         return customers;
@@ -75,6 +75,13 @@ public class CustomerServicesImpl implements CustomerServices {
     public List<Customer> getCustomerDetailsByFirstName(String firstName) throws CustomerDetailsNotFoundException {
         List<Customer> customers =   customerRepository.findByFirstName(firstName);
         if( customers.isEmpty()) throw  new CustomerDetailsNotFoundException("Customer details not found for firstName :  "+firstName);
+        return customers;
+    }
+
+    @Override
+    public List<Customer> getCustomerByEmail(String emailId) throws CustomerDetailsNotFoundException{
+        List<Customer> customers =   customerRepository.findByEmail(emailId);
+        if( customers.isEmpty()) throw  new CustomerDetailsNotFoundException("Customer details not found for email :  "+emailId);
         return customers;
     }
 }

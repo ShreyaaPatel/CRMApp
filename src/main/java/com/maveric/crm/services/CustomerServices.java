@@ -15,7 +15,9 @@ public interface CustomerServices {
     List<Customer> getCustomerDetails() throws CustomerDetailsNotFoundException;
     List<Customer> getCustomerDetailsByAge(int age) throws CustomerDetailsNotFoundException;
     List<Customer> getCustomerDetailsByGender(String  gender)throws  CustomerDetailsNotFoundException;
-    List<Customer> getCustomerDetailsBylastName(String lastName)throws CustomerDetailsNotFoundException;
+    List<Customer> getCustomerDetailsByLastName(String lastName)throws CustomerDetailsNotFoundException;
     List<Customer> getCustomerDetailsByFirstName(String firstName) throws CustomerDetailsNotFoundException;
+    List<Customer> getCustomerByEmail(String emailId)throws CustomerDetailsNotFoundException;
+
 
 }

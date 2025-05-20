@@ -14,7 +14,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private int id;
+    private int id; //attributes
 
     @NotNull(message = "First name is required")
     @Size(min = 1, message = "First name can not be empty!")
@@ -36,12 +36,12 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int age, String gender, String emailId, String lastName, String firstName) {
-        this.age = age;
-        this.gender = gender;
-        this.emailId = emailId;
-        this.lastName = lastName;
+    public Customer(String firstName, String lastName, String emailId, String gender, int age) {
         this.firstName = firstName;
+        this.lastName = lastName;
+        this.emailId = emailId;
+        this.gender = gender;
+        this.age = age;
     }
 
     public Customer(int id, String firstName, String lastName, String emailId, String gender, int age) {
@@ -105,12 +105,12 @@ public class Customer {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return id == customer.id && age == customer.age && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(emailId, customer.emailId) && Objects.equals(gender, customer.gender);
+        return id == customer.id && age == customer.age && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(gender, customer.gender) && Objects.equals(emailId, customer.emailId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, emailId, gender, age);
+        return Objects.hash(id, firstName, lastName, gender, emailId, age);
     }
 
     @Override
@@ -119,8 +119,8 @@ public class Customer {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", emailId='" + emailId + '\'' +
                 ", gender='" + gender + '\'' +
+                ", emailId='" + emailId + '\'' +
                 ", age=" + age +
                 '}';
     }
